@@ -7,7 +7,7 @@ sudo cp -f ~/srv/hanqyu-tools/.config/uwsgi.service /etc/systemd/system/uwsgi.se
 cd /srv/app
 /bin/bash -c \
 '/home/ubuntu/.pyenv/versions/3.6.5/envs/ec2-deploy/bin/python \
-~/srv/hanqyu-tools/app/manage.py collectstatic --noinput' ubuntu
+~/srv/hanqyu-tools/manage.py collectstatic --noinput' ubuntu
 
 sudo systemctl enable uwsgi
 sudo systemctl daemon-reload
