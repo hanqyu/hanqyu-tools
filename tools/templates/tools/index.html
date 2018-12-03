@@ -1,32 +1,21 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
-<head>
+ <head>
     <meta charset="UTF-8">
-    <title>Image Converter</title>
-    <!--{% load static %}-->
-    <!--<link rel="stylesheet" type="text/css" href="{% static 'tools/style.css' %}">-->
+    <title>WATCHA Tools</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'tools/style.css' %}">
 </head>
-<style>
-    .submit-btn{
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 2px 8px 0 rgba(0, 0, 0, 0.12);
-      background-color: #ff2f6e;
-      color:#fff;
-      font-size:15px;
-      border-radius:5px;
-      padding: 10px 30px;
-    }
-</style>
 <body>
-    <div class="home-inner" style="text-align:center;">
-        <h1 class="home-title"><span>IMAGE CONVERTER</span> <span style="font-weight:500;font-size:24px">for WATCHA</span></h1>
+    <div class="home-inner">
+        <h1 class="home-title">Image Downloader<span> for WATCHA</span></h1>
         <form method="POST" action="/download">
             {%csrf_token%} {{form.as_p}}
-            <p style="margin-bottom:7px;"><label for="url">이미지의 URL 주소를 입력하세요<br></label></p>
+            <p><label for="url">이미지의 URL 주소를 입력하세요<br></label></p>
             <input id="url" name="url" type="text" size="100" style="padding: 3px 0px">
             <p></p>
             <a href="{{download_image}}"><button class="submit-btn" name="download" type="submit">Download</button></a>
         </form>
-
     </div>
 </body>
 </html>

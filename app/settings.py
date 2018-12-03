@@ -39,7 +39,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '[::1]','.aws.amazon.com','amazonaws.com','hanqyu.com', '13.125.54.11',
                  'ec2-13-125-54-11.ap-northeast-2.compute.amazonaws.com']
@@ -150,16 +150,20 @@ USE_TZ = True
 ROOT_DIR = os.path.dirname(BASE_DIR)
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
-if DEBUG == True:
+STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
+
+if DEBUG is True:
     STATIC_ROOT = os.path.join(ROOT_DIR, 'hanqyu-tools', '.static')
     MEDIA_ROOT = os.path.join(ROOT_DIR, 'hanqyu-tools', '.media')
 
 STATICFILES_DIRS = [
     STATIC_DIR,
+    # os.path.join('static'),
+    # os.path.join(ROOT_DIR, 'hanqyu-tools', 'tools', 'static')
 ]
+
