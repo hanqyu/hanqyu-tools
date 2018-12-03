@@ -3,7 +3,8 @@ Description=EC2 Deploy uWSGI service
 After=syslog.target
 
 [Service]
-ExecStart=/home/ubuntu/.pyenv/versions/3.6.5/envs/ec2-deploy/bin/uwsgi -i ~/srv/hanqyu-tools/.config/uwsgi.ini
+#ExecPre=/bin/sh -c 'mkdir -p /run/uwsgi; chown deploy:deploy /run/uwsgi'
+ExecStart=/home/ubuntu/.pyenv/versions/3.6.5/envs/ec2-deploy/bin/uwsgi --uid ubuntu --gid ubuntu --master --emperor -i ~/srv/hanqyu-tools/.config/uwsgi.ini
 
 Restart=always
 KillSignal=SIGQUIT
@@ -14,3 +15,4 @@ NotifyAccess=all
 
 [Install]
 WantedBy=multi-user.target
+
