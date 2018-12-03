@@ -3,7 +3,7 @@ Description=EC2 Deploy uWSGI service
 After=syslog.target
 
 [Service]
-#ExecPre=/bin/sh -c 'mkdir -p /run/uwsgi; chown deploy:deploy /run/uwsgi'
+ExecPre=/bin/sh -c 'mkdir -p /run/uwsgi; chown ubuntu:ubuntu /run/uwsgi'
 ExecStart=/home/ubuntu/.pyenv/versions/3.6.5/envs/ec2-deploy/bin/uwsgi --uid ubuntu --gid ubuntu --master --emperor -i ~/srv/hanqyu-tools/.config/uwsgi.ini
 
 Restart=always
