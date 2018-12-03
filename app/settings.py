@@ -153,13 +153,13 @@ STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
+# MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
 
-STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
+# STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
 
-if DEBUG is True:
-    STATIC_ROOT = os.path.join(ROOT_DIR, 'hanqyu-tools', '.static')
-    MEDIA_ROOT = os.path.join(ROOT_DIR, 'hanqyu-tools', '.media')
+# if DEBUG is True:
+STATIC_ROOT = os.path.join(ROOT_DIR, 'hanqyu-tools', '.static')
+MEDIA_ROOT = os.path.join(ROOT_DIR, 'hanqyu-tools', '.media')
 
 STATICFILES_DIRS = [
     STATIC_DIR,
