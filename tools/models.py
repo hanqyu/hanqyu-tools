@@ -53,30 +53,31 @@ class Photo(models.Model):
 
         # print("I found {} face(s) in this photograph.".format(len(face_locations)))
 
-        for face_location in face_locations:
+        # for face_location in face_locations:
 
-            # Print the location of each face in this image
-            top, right, bottom, left = face_location
-            # print("A face is located at pixel location Top: {}, Left: {}, Bottom: {}, Right: {}".format(top, left, bottom, right))
+        face_location = face_locations[0]
+        # Print the location of each face in this image
+        top, right, bottom, left = face_location
+        # print("A face is located at pixel location Top: {}, Left: {}, Bottom: {}, Right: {}".format(top, left, bottom, right))
 
-            vertical, horizontal = [axis == min(original_image_size) for axis in original_image_size]
+        vertical, horizontal = [axis == min(original_image_size) for axis in original_image_size]
 
-            if vertical:
-                middle = (bottom - top) / 2 + top
-                top, bottom = middle - min(original_image_size)/2, middle + min(original_image_size)/2
-                left, right = 0, min(original_image_size)
+        if vertical:
+            middle = (bottom - top) / 2 + top
+            top, bottom = middle - min(original_image_size)/2, middle + min(original_image_size)/2
+            left, right = 0, min(original_image_size)
 
-            if horizontal:
-                middle = (right - left) / 2 + left
-                left, right = middle - min(original_image_size)/2, middle + min(original_image_size)/2
-                top, bottom = 0, min(original_image_size)
+        if horizontal:
+            middle = (right - left) / 2 + left
+            left, right = middle - min(original_image_size)/2, middle + min(original_image_size)/2
+            top, bottom = 0, min(original_image_size)
 
-            top, right, bottom, left = [int(x) for x in [top, right, bottom, left]]
-            # You can access the actual face itself like this:
-            face_image = image[top:bottom, left:right]
-            pil_image = Image.fromarray(face_image)
-            # return pil_image
-            self.image = pil_image
+        top, right, bottom, left = [int(x) for x in [top, right, bottom, left]]
+        # You can access the actual face itself like this:
+        face_image = image[top:bottom, left:right]
+        pil_image = Image.fromarray(face_image)
+        # return pil_image
+        self.image = pil_image
 
     def save_image_to_local(self):
         self.image.save(self.file_dir, 'PNG')
